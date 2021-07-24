@@ -1,60 +1,20 @@
 :root {
-  --primario: indigo;
-  --secundario: rgb(221, 39, 206);
-}
-img {
-  width: 50%;
+  --primario: #00838f;
+  --light: #4fb3bf;
+  --dark: #005662;
+  --fondo: #fff;
+  --fondo2: #e1e2e1;
 }
 body {
-  background-color: var(--primario);
-  color: var(--secundario);
+  background-color: var(--fondo2);
+  color: var(--primario);
 }
-.imagen {
-  width: 50%;
-}
-@media screen and (min-width: 300px) {
-  body {
-    background-color: red;
-  }
-  .imagen {
-    width: 20%;
-  }
-}
-@media screen and (max-width: 500px) and (min-width: 400px) {
-  body {
-    background-color: grey;
-  }
-  .imagen {
-    width: 10%;
-  }
-}
-@media screen and (max-width: 500px) {
-  body {
-    background-color: whitesmoke;
-  }
-  .imagen {
-    width: 10%;
-  }
-}
-section,
-div {
-  border: blue 2px solid;
-}
-/* Nivel 0 -> Elemento */
-div {
-  border: red 5px solid;
-}
-/* Nivel 1 -> Selección por clases */
-.caja {
-  background-color: gray;
-}
-
-.con-sombra {
-  box-shadow: 20px 20px gray;
-}
-/* Nivel 2 -> Selección por Identificador*/
-#tituloPrincipal {
-  /* !import => Permite proporcionar el estilo en el nivel que se encuentre*/
-  color: green !important;
-  font-family: Arial, Helvetica, sans-serif;
+.contenedor {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--fondo);
+  padding: 25px;
+  margin-top: 25px;
+  border-radius: 30px;
 }
