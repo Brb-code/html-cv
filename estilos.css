@@ -6,11 +6,14 @@
   --fondo2: #e1e2e1;
 }
 body {
-  background-color: var(--fondo2);
+  background-color: var(--fondo2) !important;
   color: var(--primario);
 }
+.texto-justificado {
+  text-align: justify;
+}
 .contenedor {
-  width: 60%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   background-color: var(--fondo);
@@ -28,7 +31,7 @@ body {
 }
 @media screen and (max-width: 1000px) and (min-width: 501px) {
   .contenedor {
-    width: 80%;
+    width: 90%;
     padding: 20px;
     margin-top: 20px;
     border-radius: 15px;
