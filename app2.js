@@ -1,18 +1,23 @@
-function generaNumero(){
+function generaNumero() {
     let numeroConDecimales = Math.random() * 10
-    console.log(Math.round(numeroConDecimales))    
+    console.log(Math.round(numeroConDecimales))
 }
 setInterval(() => {
-    avanzarVehiculo()
+    avanzarVehiculo("car1")
+    avanzarVehiculo("car2")
+    avanzarVehiculo("car3")
+
 }, 2000);
 
-function avanzarVehiculo(){
+function avanzarVehiculo(carro) {
+
     let numeroConDecimales = Math.random() * 10
     let cantidad = Math.round(numeroConDecimales)
-    let marginleft = document.getElementById("vehiculo").style.marginLeft.substr(0, document.getElementById("vehiculo").style.marginLeft.length - 2)
+    let marginleft = document.getElementById(carro).style.marginLeft.substr(0, document.getElementById(carro).style.marginLeft.length - 2)
     let aincrementar = Number(marginleft) + cantidad
-    document.getElementById("vehiculo").style.marginLeft = aincrementar+"px"
-    
+    document.getElementById(carro).style.marginLeft = aincrementar + "px"
+    console.log(carro, (marginleft + cantidad))
+
 }
 
 // Identificando el vehículo
