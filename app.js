@@ -81,7 +81,6 @@ setTimeout(() => {
 
 //Tarea 1
 // Dado x generar la serie de fibonacci hasta x
-
 let x = 0
 document.write()
 
