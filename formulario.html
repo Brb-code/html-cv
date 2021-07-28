@@ -8,12 +8,20 @@
     <link rel="stylesheet" href="./estilos.css">
 </head>
 <body>
-    <form onsubmit="iniciarSesion(event)">
-        <input id="usuario" type="text" placeholder="Nombre de usuario" required>
-        <input id="clave" type="password" type="password" placeholder="Contraseña" required>
-        <button type="reset">Limpiar</button>
-        <button type="submit">Enviar</button>
-    </form>
+    <div class="oculto" id="login">
+        <form onsubmit="iniciarSesion(event)">
+            <input id="usuario" type="text" placeholder="Nombre de usuario" required>
+            <input id="clave" type="password" type="password" placeholder="Contraseña" required>
+            <button type="reset">Limpiar</button>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <div class="oculto" id="tareas">
+        <h1>Bienvenid@: <span id="nombreUsuario"></span> <button>Salir</button></h1>
+        <h3>Tareas</h3>
+
+    </div>
+    
     <script src="./formulario.js"></script>
 </body>
 </html>
