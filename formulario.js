@@ -60,3 +60,11 @@ function salir(){
     document.getElementById("login").classList.remove("oculto")
         document.getElementById("tareas").classList.add("oculto")    
 }
+function guardar(event){
+    //detener la acción actual
+    event.preventDefault();
+    let tarea = document.getElementById("itarea").value
+    document.getElementById("listaTareas").innerHTML = document.getElementById("listaTareas").innerHTML + "<li>"+tarea+"</li>"
+    document.getElementById("itarea").value = ""
+}
+//Reto: cuando se haga un click sobre la tarea, quitarla de la lista
