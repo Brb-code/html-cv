@@ -1,7 +1,17 @@
-document.getElementById("login").classList.remove("oculto")
+let token = sessionStorage.getItem("token")
+let usuario
+if(token){
+    usuario = token
+    document.getElementById("nombreUsuario").innerHTML = usuario
+    document.getElementById("tareas").classList.remove("oculto")    
+
+} else {
+    document.getElementById("login").classList.remove("oculto")
+}
+
 function iniciarSesion(event){
     event.preventDefault()
-    let usuario = document.getElementById("usuario").value
+     usuario = document.getElementById("usuario").value
     let clave = document.getElementById("clave").value
     let user = {
         usuario: usuario,
@@ -19,6 +29,7 @@ function iniciarSesion(event){
                     document.getElementById("login").classList.add("oculto")
                     document.getElementById("tareas").classList.remove("oculto")                    
                     document.getElementById("nombreUsuario").innerHTML = usuario
+                    sessionStorage.setItem("token", usuario)
                 } else {
                     alert("Contraseña equivocada.")
                 }
@@ -30,6 +41,7 @@ function iniciarSesion(event){
             document.getElementById("login").classList.add("oculto")
             document.getElementById("tareas").classList.remove("oculto")        
             document.getElementById("nombreUsuario").innerHTML = usuario            
+            sessionStorage.setItem("token", usuario)
         }
         // Reto: Caso Usuario autenticado: redireccionen al archivo tareas.html
         // Contraseña equivocada: no hacer nada
@@ -40,5 +52,11 @@ function iniciarSesion(event){
         document.getElementById("login").classList.add("oculto")
         document.getElementById("tareas").classList.remove("oculto")    
         document.getElementById("nombreUsuario").innerHTML = usuario                
+        sessionStorage.setItem("token", usuario)
     }
+}
+function salir(){
+    sessionStorage.removeItem("token")
+    document.getElementById("login").classList.remove("oculto")
+        document.getElementById("tareas").classList.add("oculto")    
 }

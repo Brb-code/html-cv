@@ -17,9 +17,18 @@
         </form>
     </div>
     <div class="oculto" id="tareas">
-        <h1>Bienvenid@: <span id="nombreUsuario"></span> <button>Salir</button></h1>
+        <h1>Bienvenid@: <span id="nombreUsuario"></span> <button onclick="salir()">Salir</button></h1>
         <h3>Tareas</h3>
+        <form>
+            <input type="text" id="itarea" required>
+            <button type="submit">Guardar</button>
+        </form>
 
+        <h2>Tareas pendientes...</h2>
+        <ul>
+            <li>Tarea 1</li>
+            <li>Tarea 2 </li>
+        </ul>
     </div>
     
     <script src="./formulario.js"></script>
