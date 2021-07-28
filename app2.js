@@ -1,4 +1,4 @@
-const meta = 1000
+const meta = 500
 
 function generaNumero() {
     let numeroConDecimales = Math.random() * 200
@@ -18,9 +18,9 @@ function avanzarVehiculo(carro) {
     let aincrementar = Number(marginleft) + cantidad
     document.getElementById(carro).style.marginLeft = aincrementar + "px"
     console.log(carro, aincrementar, meta)
-    if(aincrementar>meta){
+    if (aincrementar > meta) {
         clearInterval(intervalo)
-        alert("Ganó el "+carro)
+        alert("Ganó el " + carro)
     }
 }
 
