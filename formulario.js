@@ -59,26 +59,20 @@ function iniciarSesion(event) {
 function salir() {
     sessionStorage.removeItem("token")
     document.getElementById("login").classList.remove("oculto")
-<<<<<<< HEAD
     document.getElementById("tareas").classList.add("oculto")
 }
 
 function guardar() {
     event.preventDefault();
     let tarea = document.getElementById("itarea").value
-
-    document.getElementById("listaTareas").innerHTML = document.getElementById("listaTareas").innerHTML + "<li>" + tarea + "</li>"
+    document.getElementById("listaTareas").innerHTML = document.getElementById("listaTareas").innerHTML + " <li onclick=\"eliminar(this)\">" + tarea + "</li>"
     document.getElementById("itarea").value = ''
 }
-=======
-        document.getElementById("tareas").classList.add("oculto")    
-}
-function guardar(event){
-    //detener la acción actual
+
+function eliminar(elemento) {
     event.preventDefault();
-    let tarea = document.getElementById("itarea").value
-    document.getElementById("listaTareas").innerHTML = document.getElementById("listaTareas").innerHTML + "<li>"+tarea+"</li>"
-    document.getElementById("itarea").value = ""
+    const elemlista = " <li onclick=\"eliminar(this)\">" + elemento.innerHTML + "</li>"
+    var lista = document.getElementById("listaTareas").innerHTML
+    var final = lista.replace(elemlista, "")
+    document.getElementById("listaTareas").innerHTML = final
 }
-//Reto: cuando se haga un click sobre la tarea, quitarla de la lista
->>>>>>> 76f8524a41b82e4b63ee3d677bcd6757e288340a
