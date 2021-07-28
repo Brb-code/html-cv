@@ -59,6 +59,7 @@ function iniciarSesion(event) {
 function salir() {
     sessionStorage.removeItem("token")
     document.getElementById("login").classList.remove("oculto")
+<<<<<<< HEAD
     document.getElementById("tareas").classList.add("oculto")
 }
 
@@ -69,3 +70,15 @@ function guardar() {
     document.getElementById("listaTareas").innerHTML = document.getElementById("listaTareas").innerHTML + "<li>" + tarea + "</li>"
     document.getElementById("itarea").value = ''
 }
+=======
+        document.getElementById("tareas").classList.add("oculto")    
+}
+function guardar(event){
+    //detener la acción actual
+    event.preventDefault();
+    let tarea = document.getElementById("itarea").value
+    document.getElementById("listaTareas").innerHTML = document.getElementById("listaTareas").innerHTML + "<li>"+tarea+"</li>"
+    document.getElementById("itarea").value = ""
+}
+//Reto: cuando se haga un click sobre la tarea, quitarla de la lista
+>>>>>>> 76f8524a41b82e4b63ee3d677bcd6757e288340a
