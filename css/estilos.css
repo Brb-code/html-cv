@@ -12,3 +12,7 @@
 .media_background {
     background-image: url("https://st2.depositphotos.com/4441075/7697/v/600/depositphotos_76975367-stock-illustration-sign-with-domestic-pets-silhouettes.jpg");
 }
+
+.centrado {
+    align-content: center;
+}
