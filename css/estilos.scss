@@ -1,21 +1,31 @@
+$primario: teal;
+$secundario: rgb(4, 77, 77);
+$fondo: lightgray;
+
 * {
   font-family: "Montserrat", sans-serif;
 }
 
 body {
-  background-color: lightgray;
+  background: {
+    color: $fondo;
+  }
+}
+
+@mixin centro {
+  margin: {
+    left: auto;
+    right: auto;
+  }
 }
 
 .caja-centro {
-  margin-left: auto;
-  margin-right: auto;
+  @include centro;
 }
-
 .contenido {
   width: 40%;
   padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  @include centro;
 }
 
 .media_background {
@@ -23,7 +33,5 @@ body {
 }
 
 .centrado {
-  -ms-flex-line-pack: center;
-      align-content: center;
+  align-content: center;
 }
-/*# sourceMappingURL=estilos.css.map */
