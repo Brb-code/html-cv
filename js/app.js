@@ -25,13 +25,52 @@ function onSignIn(googleUser) {
         console.warn(error)
     })
   }
+  
+  function veterinarios(){
+    document.getElementById("mensaje").style.display="none"
+    document.getElementById("lista").style.display="none"
+    obtener(apiPrincipal+"veterinarios.json")
+    .then(datos => datos.json())
+    .then(respuesta => {
+        
+        console.table(respuesta)
+        if (respuesta==null){
+            document.getElementById("mensaje").style.display="block"
+        }
+        //recorriendo los usuarios obtenidos
+        
 
-  function insertar(url, datos){
-      fetch()
+
+    }).catch(error => {
+        console.warn(error)
+    })
   }
-  function obtener(url){
+
+
+    function guardarveterinario(event){
+        event.preventDefault()
+        var nombre=document.getElementById("Nombre").value
+        var apellido=document.getElementById("Apellido").value
+        var especialidad=document.getElementById("Especialidad").value
+        var datos ={
+            nombre:nombre, apellido:apellido, especialidad:especialidad
+        }
+        insertar(apiPrincipal+"veterinarios.json", datos)
+        .then(datos => datos.json())
+        .then(respuesta => {
+            
+            console.table(respuesta)
+            location.href="veterinario.html"
+            //recorriendo los usuarios obtenidos
+            
     
-  }
+    
+        }).catch(error => {
+            console.warn(error)
+        })
+    }
+
+
 
   /*
   .then(datos => datos.json())

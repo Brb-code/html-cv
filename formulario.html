@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="500286237657-lje9bh6d0hum672p49o9hu243ifbvevn.apps.googleusercontent.com">
+
+    <title>Control Veterinario</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script src="./js/app.js"></script>
+    <script src="./js/sesion.js"></script>
+    <script src="./js/peticiones.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</head>
+<br><br><br><br>
+<div class="mdc-card contenido">
+    <div class="mdc-card__content">
+
+
+<div class="mdc-list-group centrado">
+    <h3>Formulario de Registro 
+    </h3>
+</div>
+
+<body>
+<Form onsubmit="guardarveterinario(event)">
+    
+
+    <label class="mdc-text-field mdc-text-field--filled">
+        <span class="mdc-text-field__ripple"></span>
+        <span class="mdc-floating-label" id="my-label-id">Nombre</span>
+        <input class="mdc-text-field__input " id="Nombre" required type="text" aria-labelledby="my-label-id">
+        <span class="mdc-line-ripple"></span>
+    </label> 
+    <br>
+    <br>
+    <label class="mdc-text-field mdc-text-field--filled">
+        <span class="mdc-text-field__ripple"></span>
+        <span class="mdc-floating-label" id="my-label-id">Apellido</span>
+        <input class="mdc-text-field__input" id="Apellido" required type="text" aria-labelledby="my-label-id">
+        <span class="mdc-line-ripple"></span>
+    </label> 
+    <br>
+    <br>
+    <label class="mdc-text-field mdc-text-field--filled">
+        <span class="mdc-text-field__ripple"></span>
+        <span class="mdc-floating-label" id="my-label-id">Especialidad</span>
+        <input class="mdc-text-field__input" id="Especialidad" required type="text" aria-labelledby="my-label-id">
+        <span class="mdc-line-ripple"></span>
+      </label>
+    
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <button class="mdc-button mdc-button--raised" type="submit">
+        <span class="mdc-button__label">Agregar</span>
+    </button>
+
+
+</Form>
+      
+</body>
+
+</html>
