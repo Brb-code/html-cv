@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="500286237657-lje9bh6d0hum672p49o9hu243ifbvevn.apps.googleusercontent.com">
+
+    <title>Adm. Mascotas</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script src="./js/app.js"></script>
+    <script src="./js/sesion.js"></script>
+    <script src="./js/peticiones.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</head>
+
+<body>
+    <div class="contenido">
+        <h2 class=""><strong>Registrar Mascota</strong></h2>
+        <form id="mascotas">
+            <div>
+                <label class="mdc-text-field mdc-text-field--filled nombre">
+                <span class="mdc-text-field__ripple"></span>
+                <input type="text" class="mdc-text-field__input" aria-labelledby="nombre-label" name="nombre" required>
+                <span class="mdc-floating-label" id="nombre-label">Nombre</span>
+                <span class="mdc-line-ripple"></span>
+            </label>
+            </div>
+            <br>
+            <div>
+                <label class="mdc-text-field mdc-text-field--filled especie">
+                <span class="mdc-text-field__ripple"></span>
+                <input type="text" class="mdc-text-field__input" aria-labelledby="especie-label" name="especie" required>
+                <span class="mdc-floating-label" id="especie-label">Especie</span>
+                <span class="mdc-line-ripple"></span>
+            </label>
+            </div>
+            <br>
+            <div>
+                <label class="mdc-text-field mdc-text-field--filled raza">
+                <span class="mdc-text-field__ripple"></span>
+                <input type="text" class="mdc-text-field__input" aria-labelledby="raza-label" name="raza" required>
+                <span class="mdc-floating-label" id="raza-label">Raza</span>
+                <span class="mdc-line-ripple"></span>
+            </label>
+            </div>
+            <br>
+            <div>
+                <label class="mdc-text-field mdc-text-field--filled color">
+                <span class="mdc-text-field__ripple"></span>
+                <input type="text" class="mdc-text-field__input" aria-labelledby="color-label" name="color" required>
+                <span class="mdc-floating-label" id="color-label">Color</span>
+                <span class="mdc-line-ripple"></span>
+            </label>
+            </div>
+            <br>
+            <div>
+                <label class="mdc-text-field mdc-text-field--filled fechnac">
+                <span class="mdc-text-field__ripple"></span>
+                <input type="text" class="mdc-text-field__input" aria-labelledby="fechnac-label" name="fechnac" required>
+                <span class="mdc-floating-label" id="fechnac-label">Fecha Nacimiento</span>
+                <span class="mdc-line-ripple"></span>
+            </label>
+            </div>
+            <br><br>
+            <div>
+                <button class="mdc-button mdc-button--raised" type="submit">
+                <span class="mdc-button__label">Grabar Datos</span>
+            </button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

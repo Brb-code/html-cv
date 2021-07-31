@@ -26,4 +26,9 @@ body {
   -ms-flex-line-pack: center;
       align-content: center;
 }
+
+.avatar {
+  width: 100px;
+  border-radius: 50%;
+}
 /*# sourceMappingURL=estilos.css.map */
