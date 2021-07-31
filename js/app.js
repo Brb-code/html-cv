@@ -33,9 +33,24 @@ function onSignIn(googleUser) {
     .then(datos => datos.json())
     .then(respuesta => {
         
-        console.table(respuesta)
+        console.log(Object.entries(respuesta))
         if (respuesta==null){
             document.getElementById("mensaje").style.display="block"
+        }else {
+            document.getElementById("lista").innerHTML=""
+            Object.entries(respuesta).forEach(element => {
+            console.log(element,"OK",document.getElementById("lista"))
+            var elemento='<li class="mdc-list-item" tabindex="0">'+
+            '<span class="mdc-list-item__ripple"></span>'+
+            '<span class="mdc-list-item__text">'+
+            '<span class="mdc-list-item__primary-text">'+element[1].nombre+' '+element[1].apellido+'</span>'+
+            '<span class="mdc-list-item__secondary-text">Especialidad:'+element[1].especialidad+'</span>'+
+            '</span>'+
+            '</li>'+
+            '<br>'
+            document.getElementById("lista").innerHTML=document.getElementById("lista").innerHTML+elemento
+            });
+            document.getElementById("lista").style.display="block"
         }
         //recorriendo los usuarios obtenidos
         
