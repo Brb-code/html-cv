@@ -14,13 +14,37 @@ function onSignIn(googleUser) {
     crearSesion(tmpUsuario)
     //Obteniendo usuario
     obtener(apiPrincipal+"usuario.json")
-    .then(datos => datos.json())
+    .then(datos => {
+        console.log("Informacion recuperada", datos)
+        datos.json()
+    })
     .then(respuesta => {
-        console.table(respuesta)
-        //recorriendo los usuarios obtenidos
-        
-
-
+        if(respuesta == null){
+            //Insertando datos de manera asincrona
+            insertar(apiPrincipal+"usuario.json", tmpUsuario)
+            .then(dato => dato.json())
+            .then(respuesta => {
+                console.log("Usuario registrado..",respuesta)
+                location.href="panel.html"
+            })
+        } else {
+            let existeUsuario = false
+            Object.entries(respuesta).forEach(element => {
+                console.log(element[1].correo, tmpUsuario.correo)
+                if(element[1].correo == tmpUsuario.correo){
+                    existeUsuario = true
+                }
+            })
+            if(!existeUsuario){
+              //Insertando datos de manera asincrona
+                insertar(apiPrincipal+"usuario.json", tmpUsuario)
+                .then(dato => dato.json())
+                .then(respuesta => {
+                    console.log("Usuario registrado..",respuesta)
+                })  
+            }            
+            location.href="panel.html"
+        }        
     }).catch(error => {
         console.warn(error)
     })
@@ -84,29 +108,8 @@ function onSignIn(googleUser) {
             console.warn(error)
         })
     }
-
-
-
-  /*
-  .then(datos => datos.json())
-    .then(respuesta => {
-        if(respuesta == null){
-            //Insertando datos
-            console.table(tmpUsuario)
-            fetch('https://micv-b2537-default-rtdb.firebaseio.com/usuario.json',{
-                method: 'POST',
-                body: JSON.stringify(tmpUsuario)
-            })
-            .then(datos => datos.json())
-            .then(respuesta2 => {
-                console.table(respuesta2)
-            }).catch(error2 => {
-                console.log(error2)
-            })
-        } else {
-            console.table(respuesta)
-        }
-    }).catch(error => {
-        console.log(error)
-    })
-    */
+function salir(){
+    cerrarSesion()
+    insertar('https://admin.googleapis.com/admin/directory/v1/users/500286237657-lje9bh6d0hum672p49o9hu243ifbvevn.apps.googleusercontent.com/signOut',{})
+    location.href="index.html"
+}

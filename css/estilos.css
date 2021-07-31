@@ -31,4 +31,18 @@ body {
   width: 100px;
   border-radius: 50%;
 }
+
+.ancho-completo {
+  width: 100%;
+}
+
+.ancho-completo > div {
+  width: 100% !important;
+}
+
+.imagen {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
 /*# sourceMappingURL=estilos.css.map */

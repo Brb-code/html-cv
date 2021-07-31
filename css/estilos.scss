@@ -2,41 +2,55 @@ $primario: teal;
 $secundario: rgb(4, 77, 77);
 $fondo: lightgray;
 * {
-    font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
-    background: {
-        color: $fondo;
-    }
+  background: {
+    color: $fondo;
+  }
 }
 
 @mixin centro {
-    margin: {
-        left: auto;
-        right: auto;
-    }
+  margin: {
+    left: auto;
+    right: auto;
+  }
 }
 
 .caja-centro {
-    @include centro;
+  @include centro;
 }
 
 .contenido {
-    width: 40%;
-    padding: 10px;
-    @include centro;
+  width: 40%;
+  padding: 10px;
+  @include centro;
 }
 
 .media_background {
-    background-image: url("https://st2.depositphotos.com/4441075/7697/v/600/depositphotos_76975367-stock-illustration-sign-with-domestic-pets-silhouettes.jpg");
+  background-image: url("https://st2.depositphotos.com/4441075/7697/v/600/depositphotos_76975367-stock-illustration-sign-with-domestic-pets-silhouettes.jpg");
 }
 
 .centrado {
-    align-content: center;
+  align-content: center;
 }
 
 .avatar {
-    width: 100px;
-    border-radius: 50%;
+  width: 100px;
+  border-radius: 50%;
+}
+.ancho-completo {
+  width: 100%;
+}
+
+.ancho-completo > div {
+  width: 100% !important;
+}
+.imagen {
+  width: 60%;
+  margin: {
+    left: auto;
+    right: auto;
+  }
 }
