@@ -11,7 +11,7 @@
     <?php
         $num1 = 9;
         $num2 = 6;
-        echo"Operaciones:<br>"
+        echo"Operaciones:<br>";
         echo "La suma de $num1 + $num2 es: ".$num1+$num2."<br>";
         echo "La resta de $num1 - $num2 es: ".$num1-$num2."<br>";
         echo "La resta de $num2 - $num1 es: ".$num2-$num1."<br>";
