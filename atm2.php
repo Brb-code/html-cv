@@ -89,8 +89,5 @@
                 return $montoTmp==0;
             } else return false;            
         }
-        function saldoTotalxBillete(){
-            return $this->cantidades;
-        }
     }
 ?>
