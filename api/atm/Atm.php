@@ -92,5 +92,8 @@
         function saldoTotalxBillete(){
             return $this->cantidades;
         }
+        function imprimir(){
+            return array(cortes=>$this->cortes, cantidades=>$this->cantidades);
+        }
     }
 ?>
