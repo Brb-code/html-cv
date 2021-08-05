@@ -135,7 +135,7 @@ Permite retirar un monto del cajero.
 }
 ```
 
-**401 Error**
+**402 Error**
 
 ```bash
 {
