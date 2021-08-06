@@ -1,8 +1,13 @@
 <?php
     class Atm {
+        
+        var $id;
+        var $descripcion;
         var $cortes;
         var $cantidades;
-        function Atm(){
+        function Atm($id,$nombre){
+            $this->id = $id;
+            $this->descripcion = $nombre;
             $this->cortes = array(200, 100, 50, 20, 10);
             $this->cantidades = array(200=>0,100=>2,50=>1,20=>0,10=>0);            
         }
@@ -93,7 +98,7 @@
             return $this->cantidades;
         }
         function imprimir(){
-            return array(cortes=>$this->cortes, cantidades=>$this->cantidades);
+            return array("id"=>$this->id, "descripcion"=>$this->descripcion, "cortes"=>$this->cortes, "cantidades"=>$this->cantidades);
         }
     }
 ?>
