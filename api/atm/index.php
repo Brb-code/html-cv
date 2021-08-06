@@ -6,6 +6,10 @@
     require_once("./Atm.php");
     //Cambiando la cabecera de HTML a JSON
     header("Content-Type: application/json; charset=UTF-8");
+    //Obteniendo datos del body
+    $parametros = file_get_contents('php://input');
+    $_POST = json_decode($parametros, TRUE);
+
     $atmCamacho = new Atm(1,"Camacho");
     $atmPerez = new Atm(2,"Perez");
     $atmPrado = new Atm(3,"Prado");
@@ -35,7 +39,8 @@
             echo vectorAJson($respuesta);
             break;
         case 'POST':
-            echo "Solicitado por POST";
+            //Variables o parametros
+            echo vectorAJson($_POST);
             break;
         case 'PUT':
             echo "Solicitado por PUT";
