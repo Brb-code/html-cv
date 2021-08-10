@@ -19,10 +19,22 @@
                 "ci varchar(25),".
                 "apellidos varchar(100),".
                 "celular int(10),".
-                "CONSTRAINT usuario_pk PRIMARY KEY (id_usuario), correo_uk UNIQUE (correo)".
+                "CONSTRAINT usuario_pk PRIMARY KEY (id_usuario), CONSTRAINT correo_uk UNIQUE (correo)".
             ")";
             $resultado = $cnx->query($consulta);
             if(!$resultado) return null;
+        }
+        function obtenerIdUsuario(){
+            return $this->id_usuario;
+        }
+        function cambiarIdUsuario($id){
+            $this->id_usuario = $id;
+        }
+        function obtenerCorreo(){
+            return $this->correo;
+        }
+        function cambiarCorreo($correo){
+            $this->correo = $correo;
         }
         function iniciarSesion(){
             //Insertar el registro
@@ -43,4 +55,5 @@
         }
     }
     $u1 = new Usuario();
+    $u1->cambiarCorreo("ijhm@gmail.com");
     $u1->iniciarSesion();
