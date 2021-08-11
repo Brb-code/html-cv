@@ -46,10 +46,28 @@
             $this->nombres = $nombres;
         }
         function obtenerAplicacion(){
-            return $this->apliacion;
+            return $this->aplicacion;
         }
         function cambiarAplicacion($aplicacion){
             $this->aplicacion = $aplicacion;
+        }
+        function obtenerCi(){
+            return $this->ci;
+        }
+        function cambiarCi($ci){
+            $this->ci = $ci;
+        }
+        function obtenerApellidos(){
+            return $this->apellidos;
+        }
+        function cambiarApellidos($apellidos){
+            $this->apellidos = $apellidos;
+        }
+        function obtenerCelular(){
+            return $this->celular;
+        }
+        function cambiarCelular($celular){
+            $this->celular = $celular;
         }
         function iniciarSesion(){
             //Insertar el registro
