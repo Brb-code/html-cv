@@ -6,8 +6,8 @@
         private $especie="";
         private $raza="";
         private $color="";
-        private $fec_nacimiento="";
-        private $fec_deceso="";
+        private $fechaNacimiento="";
+        private $fechaDeceso="";
         private $eliminado=false;
         private $fechaCreacion="";
         private $fechaActualizacion="";
@@ -20,8 +20,8 @@
                 especie varchar(20),
                 raza varchar(20),
                 color varchar(20),
-                fec_nacimiento date,
-                fec_deceso date,
+                fechaNacimiento date,
+                fechaDeceso date,
                 eliminado bool,
                 fechaCreacion datetime,
                 fechaActualizacion datetime,
@@ -60,17 +60,17 @@
         function cambiarColor($color){
             $this->color = $color;
         }
-        function obtenerFecNacimiento(){
-            return $this->fec_nacimiento;
+        function obtenerFechaNacimiento(){
+            return $this->fechaNacimiento;
         }
-        function cambiarFecNacimiento($fec_nacimiento){
-            $this->fec_nacimiento = $fec_nacimiento;
+        function cambiarFechaNacimiento($fechaNacimiento){
+            $this->fechaNacimiento = $fechaNacimiento;
         }
-        function obtenerFecDeceso(){
-            return $this->fec_deceso;
+        function obtenerFechaDeceso(){
+            return $this->fechaDeceso;
         }
-        function cambiarFecDeceso($fec_deceso){
-            $this->fec_deceso = $fec_deceso;
+        function cambiarFechaDeceso($fechaDeceso){
+            $this->fechaDeceso = $fechaDeceso;
         }
         function obtenerEliminado(){
             return $this->eliminado;
@@ -94,15 +94,15 @@
 
         function insertarMascota(){
             //Insertar el registro
-            $consultaInsert ='insert into mascota (nombre, especie, raza, color, fec_nacimiento, fec_deceso, eliminado, fechaCreacion, fechaActualizacion) values (:nombre, :especie, :raza, :color, :fec_nacimiento, :fec_deceso,:eliminado, :fechaCreacion, :fechaActualizacion);';
+            $consultaInsert ='insert into mascota (nombre, especie, raza, color, fechaNacimiento, fechaDeceso, eliminado, fechaCreacion, fechaActualizacion) values (:nombre, :especie, :raza, :color, :fechaNacimiento, :fechaDeceso,:eliminado, :fechaCreacion, :fechaActualizacion);';
             $cnx = conexion();
             $consulta = $cnx->prepare($consultaInsert);
             $consulta->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
             $consulta->bindParam(':especie', $this->especie, PDO::PARAM_STR);
             $consulta->bindParam(':raza', $this->raza, PDO::PARAM_STR);
             $consulta->bindParam(':color', $this->color, PDO::PARAM_STR);
-            $consulta->bindParam(':fec_nacimiento', $this->fec_nacimiento, PDO::PARAM_STR);
-            $consulta->bindParam(':fec_deceso', $this->fec_deceso, PDO::PARAM_STR);
+            $consulta->bindParam(':fechaNacimiento', $this->fechaNacimiento, PDO::PARAM_STR);
+            $consulta->bindParam(':fechaDeceso', $this->fechaDeceso, PDO::PARAM_STR);
             $consulta->bindParam(':eliminado', $this->eliminado, PDO::PARAM_BOOL);
             $consulta->bindParam(':fechaCreacion', $this->fechaCreacion, PDO::PARAM_STR);
             $consulta->bindParam(':fechaActualizacion', $this->fechaActualizacion, PDO::PARAM_STR);
@@ -117,7 +117,7 @@
             $this->id_mascota = $resultados[0]["id_mascota"];   
         }
         function actualizar(){
-            $consultaActualizar = 'UPDATE mascota set nombre=:nombre, especie=:especie, raza=:raza, color=:color, fec_nacimiento=:fec_nacimiento, fec_deceso=:fec_deceso,eliminado=:eliminado,fechaCreacion=:fechaCreacion, fechaActualizacion=now() WHERE id_mascota = :id_mascota;';
+            $consultaActualizar = 'UPDATE mascota set nombre=:nombre, especie=:especie, raza=:raza, color=:color, fechaNacimiento=:fechaNacimiento, fechaDeceso=:fechaDeceso,eliminado=:eliminado,fechaCreacion=:fechaCreacion, fechaActualizacion=now() WHERE id_mascota = :id_mascota;';
             $cnx = conexion();
             $consulta = $cnx->prepare($consultaActualizar);
             $consulta->bindParam(':id_mascota', $this->id_mascota, PDO::PARAM_INT);
@@ -125,25 +125,32 @@
             $consulta->bindParam(':especie', $this->especie, PDO::PARAM_STR);
             $consulta->bindParam(':raza', $this->raza, PDO::PARAM_STR);
             $consulta->bindParam(':color', $this->color, PDO::PARAM_STR);
-            $consulta->bindParam(':fec_nacimiento', $this->fec_nacimiento, PDO::PARAM_STR);
-            $consulta->bindParam(':fec_deceso', $this->fec_deceso, PDO::PARAM_STR);
+            $consulta->bindParam(':fechaNacimiento', $this->fechaNacimiento, PDO::PARAM_STR);
+            $consulta->bindParam(':fechaDeceso', $this->fechaDeceso, PDO::PARAM_STR);
             $consulta->bindParam(':eliminado', $this->eliminado, PDO::PARAM_BOOL);
             $consulta->bindParam(':fechaCreacion', $this->fechaCreacion, PDO::PARAM_STR);
-            $consulta->bindParam(':fechaActualizacion', $this->fechaActualizacion, PDO::PARAM_STR);
+            $resultado = $consulta->execute();
+            return $resultado;
+        }
+        function eliminar(){
+            $consultaActualizar = 'UPDATE mascota set eliminado=true,fechaActualizacion=now() WHERE id_mascota = :id_mascota;';
+            $cnx = conexion();
+            $consulta = $cnx->prepare($consultaActualizar);
+            $consulta->bindParam(':id_mascota', $this->id_mascota, PDO::PARAM_INT);
             $resultado = $consulta->execute();
             return $resultado;
         }
 
     }//fin clase Mascota
 
-    $mascota1 = new Mascota();
+/*    $mascota1 = new Mascota();
     $mascota1->cambiarIdMascota(1);
-    $mascota1->cambiarNombre("Choco");
+    $mascota1->cambiarNombre("Chocolate");
     $mascota1->cambiarEspecie("perro");
     $mascota1->cambiarRaza("Terrier");
-    $mascota1->cambiarColor("chocolate");
-    $mascota1->cambiarFecNacimiento("2015-03-15");
-    $mascota1->cambiarFecDeceso("");
+    $mascota1->cambiarColor("cafe");
+    $mascota1->cambiarFechaNacimiento("2015-03-15");
+    $mascota1->cambiarFechaDeceso("");
     //$mascota1->insertarMascota();
-    echo $mascota1->actualizar();
+    echo $mascota1->actualizar();*/
 ?>
