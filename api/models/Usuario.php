@@ -66,7 +66,7 @@
             $consulta->bindParam(':correo', $this->correo, PDO::PARAM_STR);
             $consulta->execute();
             $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
-            $this->id_usuario = $resultados[0]["id_usuario"];            
+            $this->id_usuario = $resultados[0]["id_usuario"];
         }
         function actualizar(){
             $consultaActualizar = 'UPDATE usuarioI set correo=:correo, nombres=:nombres, aplicacion=:aplicacion, ci=:ci, apellidos =:apellidos, celular=:celular, fechaActualizacion = now() WHERE id_usuario = :id_usuario;';
