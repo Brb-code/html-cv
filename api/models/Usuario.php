@@ -61,7 +61,7 @@
             $consulta->bindParam(':aplicacion', $this->aplicacion, PDO::PARAM_STR);
             $consulta->execute();
             //Seleccionar el registro
-            $consultaLee = 'SELECT * FROM usuarioI WHERE correo = :correo LIMIT 1 ;';
+            $consultaLee = 'SELECT * FROM usuarioI WHERE correo = :correo and eliminado=false LIMIT 1 ;';
             $consulta = $cnx->prepare($consultaLee);
             $consulta->bindParam(':correo', $this->correo, PDO::PARAM_STR);
             $consulta->execute();
@@ -82,10 +82,12 @@
             $resultado = $consulta->execute();
             return $resultado;
         }
+        function eliminar(){
+            $consultaActualizar = 'UPDATE usuarioI set eliminado=true, fechaActualizacion = now() WHERE id_usuario = :id_usuario;';
+            $cnx = conexion();
+            $consulta = $cnx->prepare($consultaActualizar);
+            $consulta->bindParam(':id_usuario', $this->id_usuario, PDO::PARAM_INT);
+            $resultado = $consulta->execute();
+            return $resultado;
+        }
     }
-    
-    $u1 = new Usuario();
-    $u1->cambiarCorreo("ijhm@gmail.com");
-    $u1->iniciarSesion();
-    $u1->cambiarAplicacion("Google");
-    echo $u1->actualizar();
