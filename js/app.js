@@ -13,13 +13,20 @@ function onSignIn(googleUser) {
     }
     crearSesion(tmpUsuario)
     //Obteniendo usuario
-    obtener(apiPrincipal+"usuario.json")
+    let datos= {
+        aplicacion:'GOOGLE',
+        correo:tmpUsuario.correo,
+        nombres:tmpUsuario.nombre
+    }
+    insertar(apiPrincipal+"usuario.php",datos)
     .then(datos => {
-        console.log("Informacion recuperada", datos)
         datos.json()
     })
     .then(respuesta => {
-        if(respuesta == null){
+        console.log("RESP", respuesta)
+        crearSesion(respuesta)
+        location.href="panel.html"
+        /*if(respuesta == null){
             //Insertando datos de manera asincrona
             insertar(apiPrincipal+"usuario.json", tmpUsuario)
             .then(dato => dato.json())
@@ -44,7 +51,7 @@ function onSignIn(googleUser) {
                 })  
             }            
             location.href="panel.html"
-        }        
+        } */       
     }).catch(error => {
         console.warn(error)
     })
