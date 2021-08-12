@@ -1,38 +1,43 @@
 <?php
     require_once('./../utils/conexion.php');
-    class Veterinario {
+    class veterinario {
         private $id_veterinario="";
         private $nombre="";
         private $especialidad="";
         private $direccion="";
         private $usuario_id="";
 
-        function Usuario(){
+        function veterinario(){
             $cnx = conexion();
-            $consulta = "CREATE table if not exists usuarioI (".
-                "id_usuario int(11) not null auto_increment,".
-                "correo varchar(50),".
-                "nombres varchar(100),".
-                "aplicacion varchar(10),".
-                "ci varchar(25),".
-                "apellidos varchar(100),".
-                "celular int(10),".
-                "CONSTRAINT usuario_pk PRIMARY KEY (id_usuario), CONSTRAINT correo_uk UNIQUE (correo)".
-            ")";
+            $consulta = "CREATE table if not exists veterinario (".
+                "nombre varchar(100) not null auto_increment,". 
+                "especialidad varchar(100),".
+                "direccion varchar(100),".
+                "usuario_id varchar(100),".
+                "apellidos int(11),".
+
             $resultado = $cnx->query($consulta);
             if(!$resultado) return null;
+        
         }
-        function obtenerIdUsuario(){
-            return $this->id_usuario;
+        function obtenerIdVeterinario(){
+            return $this->id_veterinario;
         }
-        function cambiarIdUsuario($id){
-            $this->id_usuario = $id;
+        function cambiarIdVeterinario($id){
+            $this->id_veterinario = $id;
         }
-        function obtenerCorreo(){
-            return $this->correo;
+        function obtenerNombre(){
+            return $this->nombre;
         }
-        function cambiarCorreo($correo){
-            $this->correo = $correo;
+        function cambiarNombre($nombre){
+            $this->nombre = $nombre;
+        }
+        
+        function obtenerUsuarioId(){
+            return $this->usuario_id;
+        }
+        function cambiarUsuarioId($id){
+            $this->usuario_id = $id;
         }
         function iniciarSesion(){
             //Insertar el registro
