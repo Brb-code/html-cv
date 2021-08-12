@@ -30,6 +30,7 @@
             //echo $consulta;
             if(!$resultado) return null;
         }
+
         function obtenerIdMascota(){
             return $this->id_mascota;
         }
@@ -91,7 +92,6 @@
             $this->fechaActualizacion = $fechaActualizacion;
         }
         
-
         function insertarMascota(){
             //Insertar el registro
             $consultaInsert ='insert into mascota (nombre, especie, raza, color, fechaNacimiento, fechaDeceso, eliminado, fechaCreacion, fechaActualizacion) values (:nombre, :especie, :raza, :color, :fechaNacimiento, :fechaDeceso,:eliminado, :fechaCreacion, :fechaActualizacion);';
@@ -142,6 +142,121 @@
         }
 
     }//fin clase Mascota
+
+    class UsuarioMascota{
+        private $id_usuario="";
+        private $id_mascota="";
+        private $fechaAdopcion="";
+        private $eliminado=false;
+        private $fechaCreacion="";
+        private $fechaActualizacion="";
+
+        function UsuarioMascota(){
+            $cnx = conexion();
+            $consulta = "CREATE table if not exists usuarioMascota (
+                id_usuario int(11) not null,
+                id_mascota int(11) not null,
+                fechaAdopcion date,
+                eliminado bool,
+                fechaCreacion datetime,
+                fechaActualizacion datetime,
+                CONSTRAINT usuarioMascota_pk PRIMARY KEY (id_usuario,id_mascota),
+                CONSTRAINT id_user_mascota FOREING KEY (id_usuario)
+                REFERENCES masusuariocota (id_usuario) MATCH SIMPLE
+                ON UPDATE NO ACTION
+                ON DELETE NO ACTION,
+                CONSTRAINT id_mascota_user FOREING KEY (id_mascota)
+                REFERENCES mascota (id_mascota) MATCH SIMPLE
+                ON UPDATE NO ACTION
+                ON DELETE NO ACTION
+                )";
+            $resultado = $cnx->query($consulta);
+            //echo $consulta;
+            if(!$resultado) return null;
+        }
+        function obtenerIdUsuario(){
+            return $this->id_usuario;
+        }
+        function cambiarIdUsuario($idusr){
+            $this->id_usuario = $idusr;
+        }
+        function obtenerIdMascota(){
+            return $this->id_mascota;
+        }
+        function cambiarIdMascota($idmct){
+            $this->id_mascota = $idmct;
+        }
+        function obtenerFechaAdopcion(){
+            return $this->fechaAdopcion;
+        }
+        function cambiarFechaAdopcion($fechaAdopcion){
+            $this->fechaAdopcion = $fechaAdopcion;
+        }
+        function obtenerEliminado(){
+            return $this->eliminado;
+        }
+        function cambiarEliminado($eliminado){
+            $this->eliminado = $eliminado;
+        }
+        function obtenerFechaCreacion(){
+            return $this->fechaCreacion;
+        }
+        function cambiarFechaCreacion($fechaCreacion){
+            $this->fechaCreacion = $fechaCreacion;
+        }
+        function obtenerFechaActualizacion(){
+            return $this->fechaActualizacion;
+        }
+        function cambiarFechaActualizacion($fechaActualizacion){
+            $this->fechaActualizacion = $fechaActualizacion;
+        }
+        function insertarUsuarioMascota(){
+            //Insertar el registro
+            $consultaInsert ='insert into usuarioMascota (id_usuario, id_mascota, fechaAdopcion,eliminado, fechaCreacion, fechaActualizacion) values (:id_usuario, :id_mascota, :fechaAdopcion,:eliminado, :fechaCreacion, :fechaActualizacion);';
+            $cnx = conexion();
+            $consulta = $cnx->prepare($consultaInsert);
+            $consulta->bindParam(':id_usuario', $this->id_usuario, PDO::PARAM_INT);
+            $consulta->bindParam(':id_mascota', $this->id_mascota, PDO::PARAM_INT);
+            $consulta->bindParam(':fechaAdopcion', $this->fechaAdopcion, PDO::PARAM_STR);
+            $consulta->bindParam(':eliminado', $this->eliminado, PDO::PARAM_BOOL);
+            $consulta->bindParam(':fechaCreacion', $this->fechaCreacion, PDO::PARAM_STR);
+            $consulta->bindParam(':fechaActualizacion', $this->fechaActualizacion, PDO::PARAM_STR);
+            $consulta->execute();
+            //Seleccionar el registro
+            $consultaLee = 'SELECT * FROM usuarioMascota WHERE id_usuario = :id_usuario and id_mascota = :id_mascota LIMIT 1 ;';
+            $consulta = $cnx->prepare($consultaLee);
+            $consulta->bindParam(':id_usuario', $this->id_usuario, PDO::PARAM_INT);
+            $consulta->bindParam(':id_mascota', $this->id_mascota, PDO::PARAM_INT);
+            $consulta->execute();
+            $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
+            //var_dump($resultados[0]);
+            $this->id_usuario = $resultados[0]["id_usuario"];   
+            $this->id_mascota = $resultados[0]["id_mascota"]; 
+        }
+        function actualizar(){
+            $consultaActualizar = 'UPDATE usuarioMascota set fechaAdopcion=:fechaAdopcion,eliminado=:eliminado, fechaAdopcion=now() WHERE id_usuario = :id_usuario and id_mascota = :id_mascota;';
+            $cnx = conexion();
+            $consulta = $cnx->prepare($consultaActualizar);
+            $consulta->bindParam(':id_usuario', $this->id_usuario, PDO::PARAM_INT);
+            $consulta->bindParam(':id_mascota', $this->id_mascota, PDO::PARAM_INT);
+            $consulta->bindParam(':fechaAdopcion', $this->fechaDeceso, PDO::PARAM_STR);
+            $consulta->bindParam(':eliminado', $this->eliminado, PDO::PARAM_BOOL);
+            $consulta->bindParam(':fechaCreacion', $this->fechaCreacion, PDO::PARAM_STR);
+            $resultado = $consulta->execute();
+            return $resultado;
+        }
+        function eliminar(){
+            $consultaActualizar = 'UPDATE usuarioMascota set eliminado=true,fechaActualizacion=now() WHERE  id_usuario = :id_usuario and id_mascota = :id_mascota;';
+            $cnx = conexion();
+            $consulta = $cnx->prepare($consultaActualizar);
+            $consulta->bindParam(':id_usuario', $this->id_usuario, PDO::PARAM_INT);
+            $consulta->bindParam(':id_mascota', $this->id_mascota, PDO::PARAM_INT);
+            $resultado = $consulta->execute();
+            return $resultado;
+        }
+
+
+    }//fin clase usuarioMascota
 
 /*    $mascota1 = new Mascota();
     $mascota1->cambiarIdMascota(1);
