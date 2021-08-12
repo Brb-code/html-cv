@@ -44,7 +44,21 @@
                 echo vectorAJson($mensaje);
             }
             break;        
+        case 'DELETE':
+            //Validando parámetros de ingreso
+            if(!isset($_GET['id'])){
+                $mensaje = array("mensaje"=>"Falta el código del Usuario.");
+                echo vectorAJson($mensaje);
+            } else {
+                $modelo->cambiarIdUsuario($_GET['id']);
+                
+                $respuesta = $modelo->eliminar();
+                $mensaje = array("respuesta"=> $respuesta);
+                echo vectorAJson($mensaje);
+            }
+            break;
         default:
-            # code...
+            $mensaje = array("respuesta"=> "El método no está disponible.");
+            echo vectorAJson($mensaje);
             break;
     }

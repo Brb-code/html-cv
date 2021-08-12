@@ -20,7 +20,7 @@
                 $modelo->cambiarRaza($_POST['raza']);
                 $modelo->cambiarColor($_POST['color']);
                 $modelo->cambiarFechaNacimiento($_POST['fechaNacimiento']);
-                if(isset($_POST['fechaDeceso']))$modelo->cambiarFechaDeceso($_POST['fechaDeceso']); else $modelo->cambiarFechaDeceso('');
+                if(isset($_POST['fechaDeceso'])) $modelo->cambiarFechaDeceso($_POST['fechaDeceso']); else $modelo->cambiarFechaDeceso('');
                 $modelo->cambiarEliminado(false);
                 $modelo->cambiarFechaCreacion(date('Y-m-d'));
                 $modelo->cambiarFechaActualizacion(date('Y-m-d'));
