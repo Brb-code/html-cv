@@ -3,6 +3,7 @@
     require_once('./../models/Mascota.php');
     require_once('./../utils/json.php');
     $modelo = new Mascota();
+    $modelo2 = new UsuarioMascota();
     //Obteniendo datos del body
     $parametros = file_get_contents('php://input');
     $_POST = json_decode($parametros, TRUE);
@@ -27,6 +28,14 @@
                 $modelo->insertarMascota();
                 $mensaje = array("id"=> $modelo->obtenerIdMascota());
                 echo vectorAJson($mensaje);
+                //damos de alta en la tabla relacional usuarioMascota
+                $modelo2->cambiarIdMascota($modelo->obtenerIdMascota());
+                $modelo2->cambiarIdUsuario($_POST['id_usuario']);
+                $modelo2->cambiarFechaAdopcion($_POST['fechaAdopcion']);
+                $modelo2->cambiarEliminado(false);
+                $modelo2->cambiarFechaCreacion(date('Y-m-d'));
+                $modelo2->cambiarFechaActualizacion(date('Y-m-d'));
+                $modelo2->insertarUsuarioMascota();
             }
             break;
         
