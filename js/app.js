@@ -19,39 +19,40 @@ function onSignIn(googleUser) {
         "nombres": tmpUsuario.nombre
     }
     insertar(apiPrincipal + "usuario.php", datos)
-        .then(datos => {
-            datos.json()
-        })
         .then(respuesta => {
+            /*    insertar(apiPrincipal + "usuario.php", datos)
+                .then(datos => { datos.json() })
+                .then(respuesta => {
+                    console.log(respuesta)*/
             console.log("RESP", respuesta)
             crearSesion(respuesta)
-            location.href = "panel.html";
-            /*if(respuesta == null){
-                //Insertando datos de manera asincrona
-                insertar(apiPrincipal+"usuario.json", tmpUsuario)
-                .then(dato => dato.json())
-                .then(respuesta => {
-                    console.log("Usuario registrado..",respuesta)
-                    location.href="panel.html"
-                })
-            } else {
-                let existeUsuario = false
-                Object.entries(respuesta).forEach(element => {
-                    console.log(element[1].correo, tmpUsuario.correo)
-                    if(element[1].correo == tmpUsuario.correo){
-                        existeUsuario = true
-                    }
-                })
-                if(!existeUsuario){
-                  //Insertando datos de manera asincrona
+                //location.href = "panel.html";
+                /*if(respuesta == null){
+                    //Insertando datos de manera asincrona
                     insertar(apiPrincipal+"usuario.json", tmpUsuario)
                     .then(dato => dato.json())
                     .then(respuesta => {
                         console.log("Usuario registrado..",respuesta)
-                    })  
-                }            
-                location.href="panel.html"
-            } */
+                        location.href="panel.html"
+                    })
+                } else {
+                    let existeUsuario = false
+                    Object.entries(respuesta).forEach(element => {
+                        console.log(element[1].correo, tmpUsuario.correo)
+                        if(element[1].correo == tmpUsuario.correo){
+                            existeUsuario = true
+                        }
+                    })
+                    if(!existeUsuario){
+                      //Insertando datos de manera asincrona
+                        insertar(apiPrincipal+"usuario.json", tmpUsuario)
+                        .then(dato => dato.json())
+                        .then(respuesta => {
+                            console.log("Usuario registrado..",respuesta)
+                        })  
+                    }            
+                    location.href="panel.html"
+                } */
         }).catch(error => {
             console.warn(error)
         })
@@ -119,4 +120,32 @@ function salir() {
     cerrarSesion()
     insertar('https://admin.googleapis.com/admin/directory/v1/users/500286237657-lje9bh6d0hum672p49o9hu243ifbvevn.apps.googleusercontent.com/signOut', {})
     location.href = "index.html"
+}
+
+function guardarMascota(event) {
+    event.preventDefault()
+    var nombre = document.getElementById("nombre").value
+    var especie = document.getElementById("especie").value
+    var raza = document.getElementById("raza").value
+    var color = document.getElementById("color").value
+    var fechaNacimiento = document.getElementById("fechaNacimiento").value
+    var fechaDeceso = document.getElementById("fechaDeceso").value
+
+
+    var datos = {
+        nombre: nombre,
+        especie: especie,
+        raza: raza,
+        color: color,
+        fechaNacimiento: fechaNacimiento,
+        fechaDeceso: fechaDeceso
+    }
+    insertar(apiPrincipal + "mascota.php", datos)
+        .then(datos => datos.json())
+        .then(respuesta => {
+            console.table(respuesta)
+            location.href = "mascotas.html"
+        }).catch(error => {
+            console.warn(error)
+        })
 }

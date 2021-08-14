@@ -23,105 +23,45 @@
 </head>
 
 <body>
-    <div class="centrado">
-        <button class="mdc-button mdc-button--raised" type="submit">
-            <span class="mdc-button__label">Agregar Mascota</span>
-        </button>
-    </div>
-    <div class="mdc-data-table">
+    <div class="contenedor">
+        <div>
+            <button class="mdl-button mdl-button--raised"><a href="formularioMascota.html
+                ">Agregar Mascota</a></button>
+        </div>
 
-        <div class="mdc-data-table__table-container">
+        <div class="mdc-data-table">
 
-            <table class="mdc-data-table__table" aria-label="Dessert calories">
-                <thead>
-                    <tr class="mdc-data-table__header-row">
-                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Elegir</th>
-                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Foto</th>
-                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Nombre</th>
-                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Detalles</th>
-                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody class="mdc-data-table__content">
-                    <tr data-row-id="u0" class="mdc-data-table__row">
-                        <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
-                            <div class="mdc-checkbox mdc-data-table__row-checkbox">
-                                <input type="checkbox" class="mdc-checkbox__native-control" aria-labelledby="u0" />
-                                <div class="mdc-checkbox__background">
-                                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                        <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                      </svg>
-                                    <div class="mdc-checkbox__mixedmark"></div>
-                                </div>
-                                <div class="mdc-checkbox__ripple"></div>
-                            </div>
-                        </td>
-                        <td class="mdc-data-table__cell" scope="row" id="u0">
-                            <img alt="Choco" class="avatar" src="https://s28461.pcdn.co/wp-content/uploads/2019/05/Las-mascotas-pueden-beneficiar-al-corazo%CC%81n.jpg" />
-                        </td>
-                        <td class="mdc-data-table__cell">Choco</td>
-                        <td class="mdc-data-table__cell">Mascota</td>
-                        <td class="mdc-data-table__cell">
-                            <span class="material-icons" title="Editar Datos Mascota">edit</span>
-                            <span class="material-icons" title="Calendario Mascota">edit_calendar</span>
-                            <span class="material-icons" title="Eliminar Mascota"> delete_outline </span>
-                        </td>
-                    </tr>
-                    <tr data-row-id="u1" class="mdc-data-table__row">
-                        <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
-                            <div class="mdc-checkbox mdc-data-table__row-checkbox">
-                                <input type="checkbox" class="mdc-checkbox__native-control" aria-labelledby="u1" />
-                                <div class="mdc-checkbox__background">
-                                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                        <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                      </svg>
-                                    <div class="mdc-checkbox__mixedmark"></div>
-                                </div>
-                                <div class="mdc-checkbox__ripple"></div>
-                            </div>
-                        </td>
-                        <td class="mdc-data-table__cell" scope="row" id="u1">
-                            <img alt="Choco" class="avatar" src="https://dam.ngenespanol.com/wp-content/uploads/2019/02/gato-dia-internacional-770x395.png" />
-                        </td>
-                        <td class="mdc-data-table__cell">Pelusa</td>
-                        <td class="mdc-data-table__cell">Gato Mascota</td>
-                        <td class="mdc-data-table__cell">
-                            <span class="material-icons" title="Editar Datos Mascota">edit</span>
-                            <span class="material-icons" title="Calendario Mascota">edit_calendar</span>
-                            <span class="material-icons" title="Eliminar Mascota"> delete_outline </span>
-                        </td>
+            <div class="mdc-data-table__table-container">
 
-                    </tr>
-                    <tr data-row-id="u2" class="mdc-data-table__row mdc-data-table__row--selected" aria-selected="true">
-                        <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
-                            <div class="mdc-checkbox mdc-data-table__row-checkbox mdc-checkbox--selected">
-                                <input type="checkbox" class="mdc-checkbox__native-control" checked aria-labelledby="u2" />
-                                <div class="mdc-checkbox__background">
-                                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                        <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                      </svg>
-                                    <div class="mdc-checkbox__mixedmark"></div>
-                                </div>
-                                <div class="mdc-checkbox__ripple"></div>
-                            </div>
-                        </td>
-                        <td class="mdc-data-table__cell" scope="row" id="u2">
-                            <img alt="Choco" class="avatar" src="https://i.blogs.es/808765/dpoty-puppy-2nd--c--tracy-kirby-the-kennel-club-2/1366_2000.jpg" />
-                        </td>
-                        <td class="mdc-data-table__cell">Maximo</td>
-                        <td class="mdc-data-table__cell">Perrito mascota</td>
-                        <td class="mdc-data-table__cell">
-                            <span class="material-icons" title="Editar Datos Mascota">edit</span>
-                            <span class="material-icons" title="Calendario Mascota">edit_calendar</span>
-                            <span class="material-icons" title="Eliminar Mascota"> delete_outline </span>
-                        </td>
+                <table class="mdc-data-table__table" aria-label="Dessert calories">
+                    <thead>
+                        <tr class="mdc-data-table__header-row">
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Foto</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Nombre</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Detalles</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="mdc-data-table__content">
+                        <tr data-row-id="u0" class="mdc-data-table__row">
+                            <td class="mdc-data-table__cell" scope="row" id="u0">
+                                <img alt="Choco" class="avatar" src="https://s28461.pcdn.co/wp-content/uploads/2019/05/Las-mascotas-pueden-beneficiar-al-corazo%CC%81n.jpg" />
+                            </td>
+                            <td class="mdc-data-table__cell">Choco</td>
+                            <td class="mdc-data-table__cell">Mascota</td>
+                            <td class="mdc-data-table__cell">
+                                <span class="material-icons" title="Editar Datos Mascota">edit</span>
+                                <span class="material-icons" title="Calendario Mascota">edit_calendar</span>
+                                <span class="material-icons" title="Eliminar Mascota"> delete_outline </span>
+                            </td>
+                        </tr>
 
-                    </tr>
-
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
 </body>
 
 </html

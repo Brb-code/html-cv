@@ -5,15 +5,25 @@ function obtener(url) {
     return fetch(url)
 }
 
-function insertar(url, datos) {
+async function insertar(url, datos) {
     // Obtenemos de un servicios los usuarios autenticados
-    console.log(url)
-    console.log(datos)
+    respuesta = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(datos)
+    })
+    console.log("resp",
+        respuesta)
+    json = await respuesta
+    console.log(json.tk)
+    return json
+}
+/*function insertar(url, datos) {
+    // Obtenemos de un servicios los usuarios autenticados
     return fetch(url, {
         method: "POST",
         body: JSON.stringify(datos)
     })
-}
+}*/
 
 function leer(url, datos = {}) {
     console.log(datos)

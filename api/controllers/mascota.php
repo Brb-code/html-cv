@@ -1,4 +1,5 @@
 <?php
+    print_r( $_SESSION);die();
     header("Content-Type: application/json; charset=UTF-8");
     require_once('./../models/Mascota.php');
     require_once('./../utils/json.php');
@@ -6,12 +7,17 @@
     $modelo2 = new UsuarioMascota();
     //Obteniendo datos del body
     $parametros = file_get_contents('php://input');
+    print_r($parametros);
+    //$_POST = explode("&", $parametros);
     $_POST = json_decode($parametros, TRUE);
-
+    //echo "mensaje";
+    //echo json_last_error_msg();
+    print_r($_POST);
     switch ($_SERVER['REQUEST_METHOD']) {
         case 'POST':
             //Validando parámetros de ingreso
-            if(!isset($_POST['nombre']) || !isset($_POST['especie']) || !isset($_POST['raza'] || !isset($_POST['color']) || !isset($_POST['fechaNacimiento'])){
+            if(!isset($_POST['nombre'])){
+            //if(!isset($_POST['nombre']) || !isset($_POST['especie']) || !isset($_POST['raza'] || !isset($_POST['color']) || !isset($_POST['fechaNacimiento'])){
                 $mensaje = array("mensaje"=>"Faltan parámetros para dar alta a la Mascota");
                 echo vectorAJson($mensaje);
             } else {

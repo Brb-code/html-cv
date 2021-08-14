@@ -6,7 +6,6 @@
     //Obteniendo datos del body
     $parametros = file_get_contents('php://input');
     $_POST = json_decode($parametros, TRUE);
-
     switch ($_SERVER['REQUEST_METHOD']) {
         case 'POST':
             //Validando parámetros de ingreso

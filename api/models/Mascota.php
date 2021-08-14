@@ -92,6 +92,16 @@
             $this->fechaActualizacion = $fechaActualizacion;
         }
         
+        function leerDatos(){
+            $consultaLee = "SELECT * from mascota as e WHERE e.id_mascota= :id_mascota AND e.eliminado=true";
+            $cnx = conexion();
+            $consulta = $cnx->prepare($consultaLee);
+            $consulta->bindParam(':id_mascota', $this->id_vetid_mascotaerinario, PDO::PARAM_INT);
+            $consulta->execute();
+            $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
+            if(!$resultado) return null; else return $resultado;
+        }
+
         function insertarMascota(){
             //Insertar el registro
             $consultaInsert ='insert into mascota (nombre, especie, raza, color, fechaNacimiento, fechaDeceso, eliminado, fechaCreacion, fechaActualizacion) values (:nombre, :especie, :raza, :color, :fechaNacimiento, :fechaDeceso,:eliminado, :fechaCreacion, :fechaActualizacion);';
@@ -210,6 +220,18 @@
         function cambiarFechaActualizacion($fechaActualizacion){
             $this->fechaActualizacion = $fechaActualizacion;
         }
+        
+        function leerDatUsr(){
+            $consultaLee = "SELECT m.*, um.fechaAdopcion from mascota as m, left join usuarioMascota as um on m.id_mascota = um.id_mascota and um.id_usuario= :id_usuario 
+            WHERE m.eliminado=true";
+            $cnx = conexion();
+            $consulta = $cnx->prepare($consultaLee);
+            $consulta->bindParam(':id_usuario', $this->id_usuario, PDO::PARAM_INT);
+            $consulta->execute();
+            $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
+            if(!$resultado) return null; else return $resultado;
+        }
+        
         function insertarUsuarioMascota(){
             //Insertar el registro
             $consultaInsert ='insert into usuarioMascota (id_usuario, id_mascota, fechaAdopcion,eliminado, fechaCreacion, fechaActualizacion) values (:id_usuario, :id_mascota, :fechaAdopcion,:eliminado, :fechaCreacion, :fechaActualizacion);';
