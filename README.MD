@@ -1,13 +1,13 @@
-# Frontend de Mascotas
+# API DOC
 
-### Tecnologías
+**POST /api/controllers/usuario.php**
+Detalle: Permite el registro posterior al inicio de sesion
 
-Este proyecto se encuentra desarrollado con:
+**GET /api/controllers/mascotas.php?id_usuario=:id**
+Detalle: Permite obtener la lista de mascotas de usuario :id
 
-- HTML5
-- SCSS
-- JS
+**POST /api/controllers/mascotas.php**
+Detalle: Permite insertar una nueva mascota
 
-### Demo
-
-Dirección del demo: [Página](https://brb-code.github.io/html-cv/)
+**GET /api/controllers/veterinio.php?id_usuario=:id**
+Detalle: Permite obtener la lista de veterinarios del usuario :id
