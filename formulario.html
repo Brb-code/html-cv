@@ -26,48 +26,98 @@
     <div class="mdc-card__content">
 
 
-<div class="mdc-list-group centrado">
-    <h3>Formulario de Registro 
-    </h3>
-</div>
+        <div class="mdc-list-group centrado">
+            <h3 align=center>Formulario de Registro </h3>
+        </div>
+        <br>
 
-<body>
-<Form onsubmit="guardarveterinario(event)">
-    
+        <body>
+            <Form onsubmit="guardarveterinario(event)">
 
+                <p><strong> Nombre: </P>
     <label class="mdc-text-field mdc-text-field--filled">
         <span class="mdc-text-field__ripple"></span>
-        <span class="mdc-floating-label" id="my-label-id">Nombre</span>
+        <span class="mdc-floating-label" id="my-label-id"></span>
         <input class="mdc-text-field__input " id="Nombre" required type="text" aria-labelledby="my-label-id">
         <span class="mdc-line-ripple"></span>
     </label> 
     <br>
     <br>
+    <p><strong> Apellido: </P>
     <label class="mdc-text-field mdc-text-field--filled">
         <span class="mdc-text-field__ripple"></span>
-        <span class="mdc-floating-label" id="my-label-id">Apellido</span>
+        <span class="mdc-floating-label" id="my-label-id"></span>
         <input class="mdc-text-field__input" id="Apellido" required type="text" aria-labelledby="my-label-id">
         <span class="mdc-line-ripple"></span>
     </label> 
     <br>
     <br>
+    <p><strong> Especialidad: </P>
     <label class="mdc-text-field mdc-text-field--filled">
         <span class="mdc-text-field__ripple"></span>
-        <span class="mdc-floating-label" id="my-label-id">Especialidad</span>
+        <span class="mdc-floating-label" id="my-label-id"></span>
         <input class="mdc-text-field__input" id="Especialidad" required type="text" aria-labelledby="my-label-id">
         <span class="mdc-line-ripple"></span>
-      </label>
-    
+    </label>
+    <br>
+    <br>
+    <p><strong> Direccion: </P>
+    <label class="mdc-text-field mdc-text-field--filled">
+        <span class="mdc-text-field__ripple"></span>
+        <span class="mdc-floating-label" id="my-label-id"></span>
 
+        <input class="mdc-text-field__input" id="Direccion" required type="text" aria-labelledby="my-label-id">
+        <span class="mdc-line-ripple"></span>
+    </label>
+    <br>
+    <br>
+    <p><strong> Telefono: </P>
+    <label class="mdc-text-field mdc-text-field--filled">
+        <span class="mdc-text-field__ripple"></span>
+        <span class="mdc-floating-label" id="my-label-id"></span>
+        <input class="mdc-text-field__input" id="Telefono" required type="text" aria-labelledby="my-label-id">
+        <span class="mdc-line-ripple"></span>
+    </label>
+            
 
+      
     <br>
     <br>
     <br>
     <br>
-    <button class="mdc-button mdc-button--raised" type="submit">
-        <span class="mdc-button__label">Agregar</span>
+    <button class="mdc-button mdc-button--raised mdc-button--leading" type="submit">
+        <span class="mdc-button__label">  <i class="material-icons mdc-button__icon" aria-hidden="true"
+            >done</i
+          >Registrar
+        </span><br>
     </button>
+    </span>
 
+    <br>
+    <br>
+    <span><a class="mdc-button mdc-button--icon-trailing" href="veterinario.html">
+        <i class="material-icons mdc-button__icon" aria-hidden="true">logout
+        </i>Volver atras
+        </a>
+    </span>   
+
+
+
+    <!-- <button class="mdc-button mdc-button--raised mdc-button--leading" type="submit">
+    <span class="mdc-button__label">  <i class="material-icons mdc-button__icon" aria-hidden="true"
+            >logout</i
+          >Volver atras
+        </span>
+ -->
+
+
+    <!-- <a class="mdc-button mdc-button--raised mdc-button--leading" href="veterinario.html">
+        <i class="material-icons mdc-button__icon" aria-hidden="true">add
+        </i>Registrar Veterinarios 
+      </a> -->
+
+    <br>
+    <br>
 
 </Form>
       

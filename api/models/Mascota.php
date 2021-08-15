@@ -181,7 +181,7 @@
                 ON DELETE NO ACTION
                 )";
             $resultado = $cnx->query($consulta);
-            //echo $consulta;
+           //echo $consulta;
             if(!$resultado) return null;
         }
         function obtenerIdUsuario(){
@@ -222,8 +222,8 @@
         }
         
         function leerDatUsr(){
-            $consultaLee = "SELECT m.*, um.fechaAdopcion from mascota as m, left join usuarioMascota as um on m.id_mascota = um.id_mascota and um.id_usuario= :id_usuario 
-            WHERE m.eliminado=true";
+            $consultaLee = "SELECT m.*, um.fechaAdopcion from mascota as m, usuarioMascota as um 
+            WHERE m.id_mascota = um.id_mascota and um.id_usuario= :id_usuario and  m.eliminado=false";
             $cnx = conexion();
             $consulta = $cnx->prepare($consultaLee);
             $consulta->bindParam(':id_usuario', $this->id_usuario, PDO::PARAM_INT);
@@ -244,16 +244,16 @@
             $consulta->bindParam(':fechaCreacion', $this->fechaCreacion, PDO::PARAM_STR);
             $consulta->bindParam(':fechaActualizacion', $this->fechaActualizacion, PDO::PARAM_STR);
             $consulta->execute();
-            //Seleccionar el registro
+/*            //Seleccionar el registro
             $consultaLee = 'SELECT * FROM usuarioMascota WHERE id_usuario = :id_usuario and id_mascota = :id_mascota LIMIT 1 ;';
             $consulta = $cnx->prepare($consultaLee);
             $consulta->bindParam(':id_usuario', $this->id_usuario, PDO::PARAM_INT);
             $consulta->bindParam(':id_mascota', $this->id_mascota, PDO::PARAM_INT);
             $consulta->execute();
             $resultados = $consulta->fetchAll(PDO::FETCH_ASSOC);
-            //var_dump($resultados[0]);
+            var_dump($resultados);
             $this->id_usuario = $resultados[0]["id_usuario"];   
-            $this->id_mascota = $resultados[0]["id_mascota"]; 
+            $this->id_mascota = $resultados[0]["id_mascota"]; */
         }
         function actualizar(){
             $consultaActualizar = 'UPDATE usuarioMascota set fechaAdopcion=:fechaAdopcion,eliminado=:eliminado, fechaAdopcion=now() WHERE id_usuario = :id_usuario and id_mascota = :id_mascota;';

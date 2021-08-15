@@ -15,9 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/estilos.css">
-    <script src="./js/app.js"></script>
-    <script src="./js/sesion.js"></script>
-    <script src="./js/peticiones.js"></script>
+
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </head>
@@ -27,40 +25,49 @@
         <div>
             <button class="mdl-button mdl-button--raised"><a href="formularioMascota.html
                 ">Agregar Mascota</a></button>
+            <button class="mdl-button mdl-button--raised"><a href="panel.html
+                    ">Menu Principal</a></button>
         </div>
+        <div id="tabladatos" style="display: block;">
+            <div class="mdc-data-table ">
 
-        <div class="mdc-data-table">
+                <div class="mdc-data-table__table-container">
 
-            <div class="mdc-data-table__table-container">
+                    <table class="mdc-data-table__table" aria-label="Dessert calories">
+                        <thead>
+                            <tr class="mdc-data-table__header-row">
+                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Foto</th>
+                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Nombre</th>
+                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Detalles</th>
+                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="mdc-data-table__content">
+                            <tr data-row-id="u0" class="mdc-data-table__row">
+                                <td class="mdc-data-table__cell" scope="row" id="u0">
+                                    <img alt="Choco" class="avatar" src="https://s28461.pcdn.co/wp-content/uploads/2019/05/Las-mascotas-pueden-beneficiar-al-corazo%CC%81n.jpg" />
+                                </td>
+                                <td class="mdc-data-table__cell">Choco</td>
+                                <td class="mdc-data-table__cell">Mascota</td>
+                                <td class="mdc-data-table__cell">
+                                    <span class="material-icons" title="Editar Datos Mascota">edit</span>
+                                    <span class="material-icons" title="Calendario Mascota">edit_calendar</span>
+                                    <span class="material-icons" title="Eliminar Mascota"> delete_outline </span>
+                                </td>
+                            </tr>
 
-                <table class="mdc-data-table__table" aria-label="Dessert calories">
-                    <thead>
-                        <tr class="mdc-data-table__header-row">
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Foto</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Nombre</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Detalles</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody class="mdc-data-table__content">
-                        <tr data-row-id="u0" class="mdc-data-table__row">
-                            <td class="mdc-data-table__cell" scope="row" id="u0">
-                                <img alt="Choco" class="avatar" src="https://s28461.pcdn.co/wp-content/uploads/2019/05/Las-mascotas-pueden-beneficiar-al-corazo%CC%81n.jpg" />
-                            </td>
-                            <td class="mdc-data-table__cell">Choco</td>
-                            <td class="mdc-data-table__cell">Mascota</td>
-                            <td class="mdc-data-table__cell">
-                                <span class="material-icons" title="Editar Datos Mascota">edit</span>
-                                <span class="material-icons" title="Calendario Mascota">edit_calendar</span>
-                                <span class="material-icons" title="Eliminar Mascota"> delete_outline </span>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+    <script src="./js/app.js"></script>
+    <script src="./js/sesion.js"></script>
+    <script src="./js/peticiones.js"></script>
+    <script>
+        mascotas();
+    </script>
 
 </body>
 

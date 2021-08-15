@@ -26,33 +26,11 @@ function onSignIn(googleUser) {
                     console.log(respuesta)*/
             console.log("RESP", respuesta)
             crearSesion(respuesta)
-                //location.href = "panel.html";
-                /*if(respuesta == null){
-                    //Insertando datos de manera asincrona
-                    insertar(apiPrincipal+"usuario.json", tmpUsuario)
-                    .then(dato => dato.json())
-                    .then(respuesta => {
-                        console.log("Usuario registrado..",respuesta)
-                        location.href="panel.html"
-                    })
-                } else {
-                    let existeUsuario = false
-                    Object.entries(respuesta).forEach(element => {
-                        console.log(element[1].correo, tmpUsuario.correo)
-                        if(element[1].correo == tmpUsuario.correo){
-                            existeUsuario = true
-                        }
-                    })
-                    if(!existeUsuario){
-                      //Insertando datos de manera asincrona
-                        insertar(apiPrincipal+"usuario.json", tmpUsuario)
-                        .then(dato => dato.json())
-                        .then(respuesta => {
-                            console.log("Usuario registrado..",respuesta)
-                        })  
-                    }            
-                    location.href="panel.html"
-                } */
+                //verificamos que el id se haya grabado en el local storage
+            var id_sesion = JSON.parse(localStorage.getItem("token"))
+            console.log(id_sesion.tk)
+                //direccionamos a la pantalla panel
+            location.href = "panel.html";
         }).catch(error => {
             console.warn(error)
         })
@@ -98,19 +76,23 @@ function guardarveterinario(event) {
     var nombre = document.getElementById("Nombre").value
     var apellido = document.getElementById("Apellido").value
     var especialidad = document.getElementById("Especialidad").value
+    var direccion = document.getElementById("Direccion").value
+    var telefono = document.getElementById("Telefono").value
+    var id_sesion = JSON.parse(localStorage.getItem("token"))
+    console.log(id_sesion.tk)
+
     var datos = {
         nombre: nombre,
         apellido: apellido,
-        especialidad: especialidad
+        especialidad: especialidad,
+        direccion: direccion,
+        telefono: telefono,
+        id_usuario: id_sesion.tk
     }
     insertar(apiPrincipal + "veterinario.php", datos)
-        .then(datos => datos.json())
         .then(respuesta => {
-
-            console.table(respuesta)
-            location.href = "veterinario.html"
-                //recorriendo los usuarios obtenidos
-
+            console.log("RESP", respuesta)
+            location.href = "veterinario.html";
         }).catch(error => {
             console.warn(error)
         })
@@ -122,29 +104,104 @@ function salir() {
     location.href = "index.html"
 }
 
+function mascotas() {
+    //document.getElementById("tabladatos").style.display = "none"
+    var id_sesion = JSON.parse(localStorage.getItem("token"))
+    console.log(id_sesion.tk)
+
+    var datos = {
+        id_usuario: id_sesion.tk,
+        id: 0
+    }
+    leer(apiPrincipal + "mascota.php", datos)
+        .then(respuesta => {
+            console.log("RESP", respuesta)
+            document.getElementById("tabladatos").innerHTML = ""
+            if (respuesta == null) {
+                document.getElementById("mensaje").style.display = "block"
+            } else {
+                document.getElementById("lista").innerHTML = ""
+                Object.entries(respuesta).forEach(element => {
+                    console.log(element, "OK", document.getElementById("lista"))
+                    var elemento = '<li class="mdc-list-item" tabindex="0">' +
+                        '<span class="mdc-list-item__ripple"></span>' +
+                        '<span class="mdc-list-item__text">' +
+                        '<span class="mdc-list-item__primary-text">' + element[1].nombre + ' ' + element[1].apellido + '</span>' +
+                        '<span class="mdc-list-item__secondary-text">Especialidad:' + element[1].especialidad + '</span>' +
+                        '</span>' +
+                        '</li>' +
+                        '<br>'
+                    document.getElementById("lista").innerHTML = document.getElementById("lista").innerHTML + elemento
+                });
+                document.getElementById("lista").style.display = "block"
+            }
+
+        }).catch(error => {
+            console.warn(error)
+        })
+
+    /*
+
+        leer(apiPrincipal + "mascota.php")
+            //.then(datos => datos.json())
+            .then(respuesta => {
+
+                console.log(Object.entries(respuesta))
+                if (respuesta == null) {
+                    document.getElementById("mensaje").style.display = "block"
+                } else {
+                    document.getElementById("lista").innerHTML = ""
+                    Object.entries(respuesta).forEach(element => {
+                        console.log(element, "OK", document.getElementById("lista"))
+                        var elemento = '<li class="mdc-list-item" tabindex="0">' +
+                            '<span class="mdc-list-item__ripple"></span>' +
+                            '<span class="mdc-list-item__text">' +
+                            '<span class="mdc-list-item__primary-text">' + element[1].nombre + ' ' + element[1].apellido + '</span>' +
+                            '<span class="mdc-list-item__secondary-text">Especialidad:' + element[1].especialidad + '</span>' +
+                            '</span>' +
+                            '</li>' +
+                            '<br>'
+                        document.getElementById("lista").innerHTML = document.getElementById("lista").innerHTML + elemento
+                    });
+                    document.getElementById("lista").style.display = "block"
+                }
+                //recorriendo los usuarios obtenidos
+
+
+
+            }).catch(error => {
+                console.warn(error)
+            })
+    */
+}
+
 function guardarMascota(event) {
     event.preventDefault()
     var nombre = document.getElementById("nombre").value
     var especie = document.getElementById("especie").value
     var raza = document.getElementById("raza").value
     var color = document.getElementById("color").value
+    var fechaAdopcion = document.getElementById("fechaAdopcion").value
     var fechaNacimiento = document.getElementById("fechaNacimiento").value
     var fechaDeceso = document.getElementById("fechaDeceso").value
-
+    var id_sesion = JSON.parse(localStorage.getItem("token"))
+    console.log(id_sesion.tk)
 
     var datos = {
+        id_usuario: id_sesion.tk,
         nombre: nombre,
         especie: especie,
         raza: raza,
         color: color,
+        fechaAdopcion: fechaAdopcion,
         fechaNacimiento: fechaNacimiento,
         fechaDeceso: fechaDeceso
     }
     insertar(apiPrincipal + "mascota.php", datos)
-        .then(datos => datos.json())
         .then(respuesta => {
-            console.table(respuesta)
-            location.href = "mascotas.html"
+            console.log("RESP", respuesta)
+                //direccionamos a la pantalla panel
+            location.href = "mascotas.html";
         }).catch(error => {
             console.warn(error)
         })

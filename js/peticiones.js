@@ -6,15 +6,25 @@ function obtener(url) {
 }
 
 async function insertar(url, datos) {
-    // Obtenemos de un servicios los usuarios autenticados
+    console.log(datos)
     respuesta = await fetch(url, {
         method: "POST",
         body: JSON.stringify(datos)
     })
-    console.log("resp",
-        respuesta)
-    json = await respuesta
-    console.log(json.tk)
+    json = await respuesta.json()
+    console.log(json)
+    return json
+}
+async function leer(url, datos) {
+    console.log(datos)
+    console.log(url)
+    link = url + "?id=" + datos['id'] + "&id_usuario=" + datos['id_usuario']
+    console.log(link)
+    respuesta = await fetch(link, {
+        method: "GET"
+    })
+    json = await respuesta.json()
+    console.log("json:", json)
     return json
 }
 /*function insertar(url, datos) {
@@ -23,7 +33,7 @@ async function insertar(url, datos) {
         method: "POST",
         body: JSON.stringify(datos)
     })
-}*/
+}
 
 function leer(url, datos = {}) {
     console.log(datos)
@@ -36,4 +46,4 @@ function leer(url, datos = {}) {
             method: "GET"
         })
     }
-}
+}*/

@@ -1,5 +1,4 @@
 <?php
-    print_r( $_SESSION);die();
     header("Content-Type: application/json; charset=UTF-8");
     require_once('./../models/Mascota.php');
     require_once('./../utils/json.php');
@@ -7,13 +6,27 @@
     $modelo2 = new UsuarioMascota();
     //Obteniendo datos del body
     $parametros = file_get_contents('php://input');
-    print_r($parametros);
+    //print_r($parametros);
     //$_POST = explode("&", $parametros);
     $_POST = json_decode($parametros, TRUE);
     //echo "mensaje";
     //echo json_last_error_msg();
-    print_r($_POST);
+    //print_r($_POST);
     switch ($_SERVER['REQUEST_METHOD']) {
+        case 'GET':
+            if(!isset($_GET['id']) || $_GET['id']==0){
+                $modelo2->cambiarIdUsuario($_POST['id_usuario']);
+                $respuesta = $modelo2->leerDatUsr();
+            }else if(isset($_GET['id'])!=0){
+                $modelo->cambiarIdMascota($_POST['id']);
+                $respuesta = $modelo->leerDatos();
+            }
+            //print_r($respuesta);
+            if($respuesta==null){
+                $respuesta = array("mensaje"=>"NO exiten datos para el id: ".$modelo->obtenerIdUser());
+            }
+            echo vectorAJson($respuesta);
+        break;
         case 'POST':
             //Validando parámetros de ingreso
             if(!isset($_POST['nombre'])){
@@ -32,8 +45,6 @@
                 $modelo->cambiarFechaCreacion(date('Y-m-d'));
                 $modelo->cambiarFechaActualizacion(date('Y-m-d'));
                 $modelo->insertarMascota();
-                $mensaje = array("id"=> $modelo->obtenerIdMascota());
-                echo vectorAJson($mensaje);
                 //damos de alta en la tabla relacional usuarioMascota
                 $modelo2->cambiarIdMascota($modelo->obtenerIdMascota());
                 $modelo2->cambiarIdUsuario($_POST['id_usuario']);
@@ -41,7 +52,10 @@
                 $modelo2->cambiarEliminado(false);
                 $modelo2->cambiarFechaCreacion(date('Y-m-d'));
                 $modelo2->cambiarFechaActualizacion(date('Y-m-d'));
+                //print_r($modelo2);
                 $modelo2->insertarUsuarioMascota();
+                $mensaje = array("id"=> $modelo->obtenerIdMascota());
+                echo vectorAJson($mensaje);
             }
             break;
         

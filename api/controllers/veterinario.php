@@ -1,6 +1,6 @@
 <?php
     header("Content-Type: application/json; charset=UTF-8");
-    require_once('./../models/Usuario.php');
+    require_once('./../models/Veterinario.php');
     require_once('./../utils/json.php');
     $modelo = new Veterinario();
     //Obteniendo datos del body
@@ -16,7 +16,6 @@
                 $modelo->cambiarIdUsuario($_POST['idusr']);
                 $respuesta = $modelo->leerDatUsr();
             }
-
             //print_r($respuesta);
             if($respuesta==null){
                 $respuesta = array("mensaje"=>"NO exiten datos para el id: ".$modelo->obtenerIdUser());
@@ -24,8 +23,9 @@
             echo vectorAJson($respuesta);
             break;
         case 'POST':
+            if(!isset($_POST['nombre'])){
             //Validando parámetros de ingreso
-            if(!isset($_POST['nombre']) || !isset($_POST['apellido']) || !isset($_POST['especialidad'] || !isset($_POST['direccion']) || !isset($_POST['telefono']) || !isset($_POST['id_usuario']) ){
+            //if(!isset($_POST['nombre']) || !isset($_POST['apellido']) || !isset($_POST['especialidad'] || !isset($_POST['direccion']) || !isset($_POST['telefono']) || !isset($_POST['id_usuario']) ){
                 $mensaje = array("mensaje"=>"Faltan parámetros para dar alta a la Mascota");
                 echo vectorAJson($mensaje);
             } else {
@@ -36,7 +36,7 @@
                 $modelo->cambiarDireccion($_POST['direccion']);
                 $modelo->cambiarTelefono($_POST['telefono']);
                 $modelo->cambiarIdUsuario($_POST['id_usuario']); 
-                $modelo->insertarMascota();
+                $modelo->insertar();
                 $mensaje = array("id"=> $modelo->obtenerIdVeterinario());
                 echo vectorAJson($mensaje);
             }
@@ -46,7 +46,8 @@
             if(!isset($_GET['id'])){
                 $mensaje = array("mensaje"=>"Falta el código del Veterinario.");
                 echo vectorAJson($mensaje);
-            } else if(!isset($_POST['nombre']) || !isset($_POST['apellido']) || !isset($_POST['especialidad'] || !isset($_POST['direccion']) || !isset($_POST['telefono']) || !isset($_POST['id_usuario']) ){
+            } else if(!isset($_POST['nombre'])){
+            //} else if(!isset($_POST['nombre']) || !isset($_POST['apellido']) || !isset($_POST['especialidad'] || !isset($_POST['direccion']) || !isset($_POST['telefono']) || !isset($_POST['id_usuario']) ){
                 $mensaje = array("mensaje"=>"Faltan parámetros para actualizar al Veterinario.");
                 echo vectorAJson($mensaje);
             } else {

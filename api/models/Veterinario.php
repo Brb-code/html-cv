@@ -22,15 +22,15 @@
                 "direccion varchar(100),".
                 "telefono varchar(12),".
                 "id_usuario integer(11),".
-                "eliminado bool,"
-                "fechaCreacion datetime,"
-                "fechaActualizacion datetime,"
+                "eliminado bool,".
+                "fechaCreacion datetime,".
+                "fechaActualizacion datetime,".
                 "CONSTRAINT veterinario_pk PRIMARY KEY (id_veterinario),".
                 "CONSTRAINT id_user_veterinario FOREIGN KEY (id_usuario)".
                 "REFERENCES usuarioI (id_usuario)".
                 "ON UPDATE NO ACTION".
-                "ON DELETE NO ACTION"
-
+                "ON DELETE NO ACTION)";
+               
             $resultado = $cnx->query($consulta);
             if(!$resultado) return null;
         }
@@ -56,7 +56,7 @@
         function obtenerEspecialidad(){
             return $this->especialidad;
         }
-        function cambiarEspecialidad($nombre){
+        function cambiarEspecialidad($especialidad){
             $this->especialidad = $especialidad;
         }
         function obtenerDireccion(){
